@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1 Lista przetargów
+    table.table-tenders
+        thead
+            tr
+                th Nr
+                th Tytuł
+                th Data rozpoczęcia
+                th Data zakończenia
+        tbody
+            each tender, index in tenders
+                tr(
+                    onclick=`window.location.href='/tenders/${tender.id}'`
+                    style='cursor: pointer;'
+                    title=`Przejdź do szczegółów przetargu`
+                )
+                    td= index + 1
+                    td= tender.title
+                    td= new Date(tender.start_date).toLocaleString()
+                    td= new Date(tender.end_date).toLocaleString()
+                    console.log(`Index: ${index + 1}, ID: ${tender._id}`)

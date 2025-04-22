@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/tenders", tenderController.listTenders);
-// router.get("/tenders/:id", tenderController.getTender);
+router.get("/tenders/:id", tenderController.getTender);
 
 
 

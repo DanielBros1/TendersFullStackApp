@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    main.tender-detail
+        h1.tender-title= tender.title
+
+        .tender-info
+            .info-group
+                h2.info-label Opis:
+                p.info-value= tender.description
+
+            .info-group
+                h2.info-label Instytucja zamawiająca:
+                p.info-value= tender.institution
+
+            .info-group
+                h2.info-label Data rozpoczęcia:
+                p.info-value= new Date(tender.start_date).toLocaleString()
+
+            .info-group
+                h2.info-label Data zakończenia:
+                p.info-value= new Date(tender.end_date).toLocaleString()
+
+            .info-group
+                h2.info-label Maksymalny budżet:
+                p.info-value #{tender.max_budget} PLN
+
+        a.tender-button(href=`/offers/new?tenderId=${tender._id}`) Złóż ofertę
