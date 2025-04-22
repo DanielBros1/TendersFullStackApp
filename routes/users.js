@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const tenderController = require('../controllers/tenderController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+router.get("/", tenderController.home);
+router.get("/tenders", tenderController.listTenders);
+// router.get("/tenders{id}", tenderController.getTender);
+// TODO: Add routes for creating, updating, and deleting tenders
 
 module.exports = router;
