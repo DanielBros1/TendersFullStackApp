@@ -1,7 +1,20 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title System Przetargowy
+        link(rel="stylesheet", href="/stylesheets/style.css")
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+            .container-fluid
+                h1.navbar-brand System Przetargowy
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link(href="/") Strona główna
+                    li.nav-item
+                        a.nav-link(href="/tenders") Lista przetargów
+                    li.nav-item
+                        a.nav-link(href="/tenders/ended") Lista zakończonych przetargów
+                    li.nav-item
+                        a.nav-link(href="/tenders/add") Dodaj przetarg
+        .container
+            block content

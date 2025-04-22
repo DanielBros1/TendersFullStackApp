@@ -10,4 +10,6 @@ exports.listTenders = (req, res) => {
     db.query(Tender.getAllTenders, (err, results) => {
         res.render("tenders/list", { tenders: results });
     });
+
+
 };
