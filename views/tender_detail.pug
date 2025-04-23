@@ -24,5 +24,8 @@ block content
             .info-group
                 h2.info-label Maksymalny budżet:
                 p.info-value #{tender.max_budget} PLN
+        if new Date() < new Date(tender.end_date)
+            a.tender-button(href=`/tenders/${tender.id}/offer`) Złóż ofertę
 
-        a.tender-button(href=`/offers/new?tenderId=${tender._id}`) Złóż ofertę
+        else
+            p(style="color: red") Przetarg zakończony. Nie można już składać ofert.

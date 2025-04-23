@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Złóż ofertę w przetargu: #{tender.title}
+
+    form.form-center(method="POST", action=`/tenders/${tender.id}/offer`)
+        div
+            label(for="bidder_name") Nazwa składającego ofertę:
+            input(type="text", name="bidder_name", required=true)
+
+        div
+            label(for="amount") Wartość oferty (PLN):
+            input(type="number", name="amount", step="0.01", required=true)
+
+        button.btn-center(type="submit") Wyślij ofertę
+
+
