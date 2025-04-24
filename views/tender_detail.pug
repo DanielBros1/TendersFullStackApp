@@ -21,9 +21,6 @@ block content
                 h2.info-label Data zakończenia:
                 p.info-value= new Date(tender.end_date).toLocaleString()
 
-            .info-group
-                h2.info-label Maksymalny budżet:
-                p.info-value #{tender.max_budget} PLN
         if new Date() < new Date(tender.end_date)
             a.tender-button(href=`/tenders/${tender.id}/offer`) Złóż ofertę
 
