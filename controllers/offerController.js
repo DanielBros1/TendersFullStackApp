@@ -38,7 +38,7 @@ exports.submitOffer = (req, res) => {
             amount: req.body.amount
         };
 
-        Offer.create(offerData, (err, results) => {
+        Offer.create(offerData, (err) => {
             if (err) {
                 return res.status(500).send("Nie udało się złożyć oferty. Spróbuj ponownie później.");
             }

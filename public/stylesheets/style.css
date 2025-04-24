@@ -17,14 +17,6 @@ a {
   color: inherit;
 }
 
-/* Nagłówek */
-header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 20px 7px;
-  text-align: center;
-}
-
 h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
@@ -102,30 +94,12 @@ button:hover {
 }
 
 /* Strona główna */
-
-/* Kontener główny */
-.home-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-/* Nagłówek */
 .main-title {
   color: #2c3e50;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.welcome-text {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-/* Sekcja intro */
 .intro-box {
   background-color: #f8f9fa;
   padding: 25px;
@@ -150,8 +124,7 @@ button:hover {
 }
 
 .feature-item {
-  padding: 8px 0;
-  padding-left: 25px;
+  padding: 8px 0 8px 25px;
   position: relative;
   line-height: 1.5;
 }
@@ -180,12 +153,13 @@ button:hover {
 }
 
 .action-paragraph:before {
-  content: "→";
+  content: "-";
   color: #3498db;
   position: absolute;
   left: 0;
 }
 
+/***********************/
 
 /* Formularze */
 form {
@@ -207,13 +181,13 @@ form button {
   align-self: flex-start;
 }
 
-/* Tabele */
+/* Lista przetargów */
 .table-tenders {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 23px;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .table-tenders th,
@@ -224,7 +198,10 @@ form button {
 }
 
 .table-tenders th {
-  background-color: #f4f4f4;
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  text-align: left;
 }
 
 .table-tenders tr:nth-child(even) {
@@ -235,13 +212,7 @@ form button {
   background-color: #e6f7ff;
 }
 
-
-/* Lista przetargów */
-.tender-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
+/* Detale przetargu */
 
 .tender-card {
   background-color: #fff;
@@ -274,7 +245,22 @@ form button {
   color: #45a049;
 }
 
-/* Detale przetargu */
+.tender-button {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1.5rem;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.tender-button:hover {
+  background: #2980b9;
+}
 
 /* Kontener główny */
 .tender-detail {
@@ -292,7 +278,6 @@ form button {
   font-size: 2rem;
 }
 
-/* Sekcje informacyjne */
 .tender-info {
   background: #f9f9f9;
   padding: 1.5rem;
@@ -315,23 +300,6 @@ form button {
   line-height: 1.6;
 }
 
-/* Przycisk */
-.tender-button {
-  display: block;
-  width: fit-content;
-  margin: 2rem auto 0;
-  padding: 0.8rem 1.5rem;
-  background: #3498db;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.tender-button:hover {
-  background: #2980b9;
-}
 
 /* Oferty */
 
@@ -393,27 +361,14 @@ form button {
   overflow-x: auto;
 }
 
-.table-tenders {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
 
-.table-tenders th {
-  background-color: #3498db;
-  color: white;
-  padding: 12px;
-  text-align: left;
-}
+
 
 .table-tenders td {
   padding: 10px 12px;
   border-bottom: 1px solid #ddd;
 }
 
-.table-tenders tr:hover {
-  background-color: #e6f7ff;
-}
 
 /* Dodawanie przetargu */
 

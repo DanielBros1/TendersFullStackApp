@@ -74,7 +74,7 @@ exports.submitTender = (req, res) => {
         return res.status(400).json({error: "Wszystkie pola są wymagane."});
     }
 
-    Tender.createTender(tenderData, (err, results) => {
+    Tender.createTender(tenderData, (err) => {
         if (err) {
             return res.status(500).json({error: "Nie udało się dodać przetargu. Spróbuj ponownie później."});
         }

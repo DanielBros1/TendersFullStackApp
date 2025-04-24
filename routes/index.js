@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const tenderController = require('../controllers/tenderController');
 const offerController = require("../controllers/offerController");
-const {route} = require("express/lib/application");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
