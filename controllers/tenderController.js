@@ -33,31 +33,15 @@ exports.getEndedTenderRecord = (req, res) => {
             return res.status(404).json({error: "Nie znaleziono przetargu o podanym identyfikatorze."});
         }
 
-        console.log("Jesteśmy w rekordzie " + results.title);
-
         Offer.getByTenderId(req.params.id, (err, offer) => {
             if (err) {
                 return res.status(500).json({error: "Nie udało się pobrać ofert przetargu. Spróbuj ponownie później."});
             }
-            // sprawdz typ offer.amount
-            console.log("Typ oferty: " + typeof offer.amount);
-            console.log("typ max_budget: " + typeof results.max_budget);
 
             const validOffers = offer.filter(offer => Number(offer.amount) <= Number(results.max_budget));
             validOffers.sort((a, b) => Number(a.amount) - Number(b.amount));
-            console.log(validOffers);
-
             const noValidOffers = validOffers.length === 0;
-            console.log("Przekazane elementy do widoku:\n Result: " + JSON.stringify(results) + "\n Offer: " + offer.length + "\n Valid: " + validOffers.length + "\n NoValid: " + noValidOffers);
 
-            // Wypisz oferty:
-            console.log("Oferty przetargu:");
-            validOffers.forEach(offer => {
-                console.log(`Nazwa oferenta: ${offer.bidder_name}, Kwota: ${offer.amount}`);
-                // print type of offer
-                console.log(`Typ oferty: ${typeof offer}`);
-                console.log(`Offer: ` + offer);
-            })
             res.render("ended_detail", {tender: results, validOffers: validOffers, noValidOffers: noValidOffers });
         })
     });
@@ -72,12 +56,29 @@ exports.listEndedTenders = (req, res) => {
     });
 }
 
-// exports.createTender = (req, res) => {
-//     Tender.createTender(req.body, (err, results) => {
-//         if (err) {
-//             return res.status(500).json({ error: "Nie udało się utworzyć przetargu. Upewnij się, że wszystkie dane są poprawne i spróbuj ponownie." });
-//         }
-//         res.status(201).json({ message: "Przetarg został utworzony pomyślnie.", id: results });
-//     });
-// }
+exports.tenderForm = (req, res) => {
+    res.render("add_tender");
+}
+
+exports.submitTender = (req, res) => {
+    const tenderData = {
+        title: req.body.title,
+        description: req.body.description,
+        institution: req.body.institution,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        max_budget: req.body.max_budget
+    };
+
+    if (!tenderData.title || !tenderData.description || !tenderData.institution || !tenderData.start_date || !tenderData.end_date || tenderData.max_budget <= 0) {
+        return res.status(400).json({error: "Wszystkie pola są wymagane."});
+    }
+
+    Tender.createTender(tenderData, (err, results) => {
+        if (err) {
+            return res.status(500).json({error: "Nie udało się dodać przetargu. Spróbuj ponownie później."});
+        }
+        res.redirect("/tenders");
+    });
+}
 

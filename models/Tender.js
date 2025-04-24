@@ -15,7 +15,6 @@ const Tender = {
             if (err) {
                 return callback(err);
             }
-            console.log("Dane pobrane z bazy danych:", results);
             callback(null, results);
         });
     },

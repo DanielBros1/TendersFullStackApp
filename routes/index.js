@@ -11,11 +11,18 @@ router.get('/', function(req, res, next) {
 
 router.get("/tenders", tenderController.listTenders);
 router.get("/tenders/ended", tenderController.listEndedTenders);
+
+// formularz dodawania przetargu
+router.get("/tenders/add", tenderController.tenderForm); // formularz
+router.post("/tenders/add", tenderController.submitTender); // obsługa POST
+
 router.get("/tenders/:id", tenderController.getTenderRecord);
 router.get("/tenders/ended/:id", tenderController.getEndedTenderRecord);
 
+// formularz składania oferty
 router.get("/tenders/:id/offer", offerController.offerForm); // formularz
 router.post("/tenders/:id/offer", offerController.submitOffer); // obsługa POST
+
 
 
 module.exports = router;

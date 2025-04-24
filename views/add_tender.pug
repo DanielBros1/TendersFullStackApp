@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .tender-form-container
+        h1 Dodaj nowy przetarg
+
+        form(action="/tenders/add" method="POST")
+            div.form-group
+                label(for="title") Tytuł:
+                input(type="text" name="title" required)
+
+            div.form-group
+                label(for="description") Opis:
+                textarea(name="description" required)
+
+            div.form-group
+                label(for="institution") Instytucja:
+                input(type="text" name="institution" required)
+
+            div.form-group
+                label(for="start_date") Data rozpoczęcia:
+                input(type="datetime-local" name="start_date" required)
+
+            div.form-group
+                label(for="end_date") Data zakończenia:
+                input(type="datetime-local" name="end_date" required)
+
+            div.form-group
+                label(for="max_budget") Maksymalny budżet (PLN):
+                input(type="number" name="max_budget" step="0.01" required)
+
+            div.form-group
+                button(type="submit") Dodaj przetarg
