@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    main.tender-detail
+        h1.tender-title= tender.title
+
+        .tender-info
+            .info-group
+                h2.info-label Instytucja zamawiająca:
+                p.info-value= tender.institution
+
+            .info-group
+                h2.info-label Data rozpoczęcia:
+                p.info-value= new Date(tender.start_date).toLocaleString()
+
+            .info-group
+                h2.info-label Data zakończenia:
+                p.info-value= new Date(tender.end_date).toLocaleString()
+
+            .info-group
+                h2.info-label Maksymalny budżet:
+                p.info-value #{tender.max_budget} PLN
+
+            .info-group
+                h2.info-label Liczba ofert:
+                p.info-value= validOffers.length
+
+            .info-group
+                h2.info-label Najlepsza oferta:
+                p.info-value= validOffers[0] ? `${validOffers[0].bidder_name} (${validOffers[0].amount} PLN)` : 'Brak ofert'
+
+        if noValidOffers
+            p(style="color: red; text-align: center; margin: 20px 0;") Przetarg zakończony bez rozstrzygnięcia. Wszystkie oferty przekraczają budżet.
+        else
+            .offers-section
+                h2.info-label Oferty mieszczące się w budżecie:
+                .table-container
+                    table.table-tenders
+                        thead
+                            tr
+                                th Lp.
+                                th Nazwa oferenta
+                                th Kwota (PLN)
+                        tbody
+                            each offer, index in validOffers
+                                tr
+                                    td= index + 1
+                                    td= offer.bidder_name
+                                    td= offer.amount

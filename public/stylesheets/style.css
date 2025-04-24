@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: bisque;
+  background-color: ivory;
   color: #333;
   line-height: 1.6;
 }
@@ -289,3 +289,42 @@ form button {
   background-color: #0056b3;
 }
 
+
+.offers-section {
+  margin-top: 2rem;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.offers-section h2 {
+  margin-bottom: 1rem;
+  color: #3498db;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table-tenders {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table-tenders th {
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.table-tenders td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-tenders tr:hover {
+  background-color: #e6f7ff;
+}

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Zakończone przetargi
+    table.table-tenders
+        thead
+            tr
+                th Nr
+                th Tytuł
+                th Data rozpoczęcia
+                th Status
+        tbody
+            each tender, index in tenders
+                tr(
+                    onclick=`window.location.href='/tenders/ended/${tender.id}'`
+                    style='cursor: pointer;'
+                    title='Przejdź do szczegółów przetargu'
+                )
+                    td= index + 1
+                    td= tender.title
+                    td= new Date(tender.start_date).toLocaleString()
+                    td Zbieranie ofert zakończone

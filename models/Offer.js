@@ -10,7 +10,18 @@ const Offer = {
                 callback(null, results.insertId);
             }
         );
-    }
+    },
+
+    getByTenderId: function (tenderId, callback) {
+        db.query(
+            'SELECT * FROM offers WHERE tender_id = ?',
+            [tenderId],
+            (err, results) => {
+                if (err) return callback(err);
+                callback(null, results);
+            }
+        );
+    },
 };
 
 module.exports = Offer;

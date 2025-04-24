@@ -10,6 +10,16 @@ const Tender = {
         });
     },
 
+    getEndedTenders: function(callback) {
+        db.query(`SELECT * FROM tenders WHERE end_date < NOW()`, (err, results) => {
+            if (err) {
+                return callback(err);
+            }
+            console.log("Dane pobrane z bazy danych:", results);
+            callback(null, results);
+        });
+    },
+
     getActiveTenders: function(callback) {
         db.query(`SELECT id, title, description, institution, start_date, end_date, max_budget
                   FROM tenders
